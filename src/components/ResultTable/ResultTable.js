@@ -1,3 +1,5 @@
+import classes from "./ResultTable.module.css";
+
 const ResultTable = (props) => {
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -7,7 +9,7 @@ const ResultTable = (props) => {
   });
 
   return (
-    <table className="result">
+    <table className={classes.result}>
       <thead>
         <tr>
           <th>Year</th>
