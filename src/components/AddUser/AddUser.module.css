@@ -1,0 +1,18 @@
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form label {
+    padding: 1rem 0 .5rem 0;
+    font-weight: bold;
+    text-align: start;
+}
+
+.form input {
+    padding:.5rem;
+}
+
+.form button {
+    align-self: end;
+}
