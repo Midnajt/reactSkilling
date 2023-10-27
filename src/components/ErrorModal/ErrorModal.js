@@ -9,8 +9,16 @@ const ErrorModal = (props) => {
 
     props.onConfirmError();
   };
+
+  const clickHandler = () => {
+    props.onConfirmError();
+  };
   return (
-    <form onSubmit={submtiHandler} className={classes.errorModal}>
+    <form
+      onSubmit={submtiHandler}
+      className={classes.errorModal}
+      onClick={clickHandler}
+    >
       <Card classes={classes.modal}>
         <p>Invalid input</p>
         <p>Please enter a valid name and age (non-empty values).</p>
