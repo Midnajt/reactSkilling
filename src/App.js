@@ -7,7 +7,7 @@ import "./index.css";
 function App() {
   const [showPopup, setShowPopup] = useState(false);
   const [users, setUsers] = useState([]);
-  console.log({ users });
+
   const confirmError = () => {
     setShowPopup(false);
   };
@@ -17,17 +17,13 @@ function App() {
   };
 
   const addUser = (userData) => {
-    console.log(userData);
-    console.log(userData.userName);
-    console.log(userData.userAge);
-
-    setUsers(users.push(userData));
+    setUsers((prevUsers) => [...prevUsers, userData]);
   };
   return (
     <div>
       <AddUser onCheckData={checkData} onAddUser={addUser} />
       {showPopup && <ErrorModal onConfirmError={confirmError} />}
-      {users.length > 0 && <UsersList />}
+      {users.length > 0 && <UsersList users={users} />}
     </div>
   );
 }
