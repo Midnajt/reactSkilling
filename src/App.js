@@ -1,29 +1,22 @@
 import React, { useState } from "react";
-import AddUser from "./components/AddUser/AddUser";
-import ErrorModal from "./components/ErrorModal/ErrorModal";
-import UsersList from "./components/UsersList/UsersList";
+import AddUser from "./components/Users/AddUser";
+import UsersList from "./components/Users/UsersList";
+// import ErrorModal from "./components/ErrorModal/ErrorModal";
+// import UsersList from "./components/UsersList/UsersList";
 import "./index.css";
 
 function App() {
-  const [showPopup, setShowPopup] = useState(false);
-  const [users, setUsers] = useState([]);
+  const [usersList, setUsersList] = useState([]);
 
-  const confirmError = () => {
-    setShowPopup(false);
-  };
-
-  const checkData = () => {
-    setShowPopup(true);
-  };
-
-  const addUser = (userData) => {
-    setUsers((prevUsers) => [...prevUsers, userData]);
+  const addUser = (uName, uAge) => {
+    setUsersList((prevUsersList) => {
+      return [...prevUsersList, { name: uName, age: uAge, id: Math.random().toString() }];
+    });
   };
   return (
     <div>
-      <AddUser onCheckData={checkData} onAddUser={addUser} />
-      {showPopup && <ErrorModal onConfirmError={confirmError} />}
-      {users.length > 0 && <UsersList users={users} />}
+      <AddUser onAddUser={addUser} />
+      <UsersList users={usersList} />
     </div>
   );
 }
