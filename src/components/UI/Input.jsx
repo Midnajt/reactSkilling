@@ -2,6 +2,7 @@ import React, { forwardRef } from "react";
 
 // forwardRef musi być uzyte kiedy komponent przyjmuje ref
 // okraszajac komponent forwardRef'em trzeba dodac ekstra parametr 'ref' obok obiektu z propsami
+// forwardRef pozwala korzystac z value inputu (i nie tylko) w innym komponencie
 
 const Input = forwardRef(function Input({ label, isTextarea, ...props }, ref) {
   const classes = "w-full p-1 border-b-2 rounded-sm border-stone-300 bg-stone-200 text0stone-600 focus:outline-none focus:border-stone-600";
