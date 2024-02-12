@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&family=Lato:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&family=Lato:wght@400;700&display=swap");
 
 * {
   box-sizing: border-box;
@@ -6,19 +6,19 @@
 
 body {
   margin: 0;
-  font-family: 'Lato', serif;
+  font-family: "Lato", serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: linear-gradient(#222c31, #111d32);
   color: #d9e2f1;
   min-height: 100vh;
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Quicksand", sans-serif;
 }
 
 #main-header {
   margin: 2rem auto;
   text-align: center;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   color: #87a7a4;
 }
 
@@ -82,7 +82,7 @@ section {
   -webkit-appearance: none;
 }
 
-#configure-counter input[type='number'] {
+#configure-counter input[type="number"] {
   -moz-appearance: textfield;
 }
 
@@ -172,6 +172,7 @@ section {
   text-decoration: none;
   text-align: center;
   transition: background-color 0.3s ease;
+  cursor: pointer;
 }
 
 .button-icon {
