@@ -35,11 +35,8 @@ function App() {
     });
 
     try {
-      console.log([selectedPlace, ...userPlaces]);
       await updateUserPlaces([selectedPlace, ...userPlaces]);
-      console.log("klik");
     } catch (error) {
-      // ...
       console.log(error);
     }
   }
