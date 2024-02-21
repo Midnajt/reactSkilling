@@ -37,7 +37,7 @@ function App() {
     try {
       await updateUserPlaces([selectedPlace, ...userPlaces]);
     } catch (error) {
-      console.log(error);
+      // ...
     }
   }
 
