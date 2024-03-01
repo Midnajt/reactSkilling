@@ -19,6 +19,11 @@ export default function Login() {
     event.preventDefault();
 
     console.log(`User email: ${enteredValues["email"]}; User password: ${enteredValues["password"]}`);
+    // reset
+    setEnteredValues({
+      email: "",
+      password: "",
+    });
   }
 
   return (

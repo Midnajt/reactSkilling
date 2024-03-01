@@ -11,6 +11,9 @@ export default function Login() {
     const enteredPassword = password.current.value;
 
     console.log(enteredEmail, enteredPassword);
+    // ponizsze rozwiazanie majace na celu wyczyscic input.value nie jest rekomendowane
+    email.current.value = "";
+    password.current.value = "";
   }
 
   return (
