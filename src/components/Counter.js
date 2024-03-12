@@ -2,12 +2,18 @@ import classes from "./Counter.module.css";
 //(useSelector || useStore) to hook zapewniany przez redux
 // useDispatch sluzy to wywolywania funkcji z store i osblugi stanow, ktore sie tam znajduja
 import { useSelector, useDispatch } from "react-redux";
+
 const Counter = () => {
   const dispatch = useDispatch();
   const counter = useSelector((state) => state.counter); // sprawdzamy stan z store przekazanego do redux
+  const show = useSelector((state) => state.showCounter);
 
   const incrementHandler = () => {
     dispatch({ type: "increment" });
+  };
+
+  const increaseHandler = () => {
+    dispatch({ type: "increase", amount: 15 });
   };
 
   const decrementHandler = () => {
@@ -15,15 +21,16 @@ const Counter = () => {
   };
 
   const toggleCounterHandler = () => {
-    console.log("Toggle");
+    dispatch({ type: "toggle" });
   };
 
   return (
     <main className={classes.counter}>
       <h1>Redux Counter</h1>
-      <div className={classes.value}>{counter}</div>
+      {show && <div className={classes.value}>{counter}</div>}
       <div>
         <button onClick={incrementHandler}>Increment</button>
+        <button onClick={increaseHandler}>Increase by 15</button>
         <button onClick={decrementHandler}>Decrement</button>
       </div>
       <button onClick={toggleCounterHandler}>Toggle Counter</button>
