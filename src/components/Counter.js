@@ -1,27 +1,27 @@
-import classes from "./Counter.module.css";
-//(useSelector || useStore) to hook zapewniany przez redux
-// useDispatch sluzy to wywolywania funkcji z store i osblugi stanow, ktore sie tam znajduja
 import { useSelector, useDispatch } from "react-redux";
+
+import { counterActions } from "../store/counter";
+import classes from "./Counter.module.css";
 
 const Counter = () => {
   const dispatch = useDispatch();
-  const counter = useSelector((state) => state.counter); // sprawdzamy stan z store przekazanego do redux
-  const show = useSelector((state) => state.showCounter);
+  const counter = useSelector((state) => state.counter.counter); // sprawdzamy stan z store przekazanego do redux
+  const show = useSelector((state) => state.counter.showCounter);
 
   const incrementHandler = () => {
-    dispatch({ type: "increment" });
+    dispatch(counterActions.increment());
   };
 
   const increaseHandler = () => {
-    dispatch({ type: "increase", amount: 15 });
+    dispatch(counterActions.increase(15)); // {type:SOME_UNIWUE_IDENTIFIER, payload: 15}
   };
 
   const decrementHandler = () => {
-    dispatch({ type: "decrement" });
+    dispatch(counterActions.decrement());
   };
 
   const toggleCounterHandler = () => {
-    dispatch({ type: "toggle" });
+    dispatch(counterActions.toggleCounter());
   };
 
   return (
@@ -39,6 +39,52 @@ const Counter = () => {
 };
 
 export default Counter;
+
+// ========================================================================
+
+// import classes from "./Counter.module.css";
+// //(useSelector || useStore) to hook zapewniany przez redux
+// // useDispatch sluzy to wywolywania funkcji z store i osblugi stanow, ktore sie tam znajduja
+// import { useSelector, useDispatch } from "react-redux";
+
+// const Counter = () => {
+//   const dispatch = useDispatch();
+//   const counter = useSelector((state) => state.counter); // sprawdzamy stan z store przekazanego do redux
+//   const show = useSelector((state) => state.showCounter);
+
+//   const incrementHandler = () => {
+//     dispatch({ type: "increment" });
+//   };
+
+//   const increaseHandler = () => {
+//     dispatch({ type: "increase", amount: 15 });
+//   };
+
+//   const decrementHandler = () => {
+//     dispatch({ type: "decrement" });
+//   };
+
+//   const toggleCounterHandler = () => {
+//     dispatch({ type: "toggle" });
+//   };
+
+//   return (
+//     <main className={classes.counter}>
+//       <h1>Redux Counter</h1>
+//       {show && <div className={classes.value}>{counter}</div>}
+//       <div>
+//         <button onClick={incrementHandler}>Increment</button>
+//         <button onClick={increaseHandler}>Increase by 15</button>
+//         <button onClick={decrementHandler}>Decrement</button>
+//       </div>
+//       <button onClick={toggleCounterHandler}>Toggle Counter</button>
+//     </main>
+//   );
+// };
+
+// export default Counter;
+
+// ========================================================================
 
 // import { Component } from "react";
 // import classes from "./Counter.module.css";
