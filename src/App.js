@@ -1,26 +1,43 @@
-import { useEffect } from "react";
+import { Fragment, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
 import Cart from "./components/Cart/Cart";
 import Layout from "./components/Layout/Layout";
 import Products from "./components/Shop/Products";
-import { useSelector } from "react-redux";
+import Notification from "./components/UI/Notification";
+import { fetchCartData, sendCartData } from "./store/cart-actions";
+
+let isInitial = true;
 
 function App() {
+  const dispatch = useDispatch();
   const showCart = useSelector((state) => state.ui.cartIsVisible);
-
   const cart = useSelector((state) => state.cart); //nasłuchujemy zmian w cart z reduxa
+  const notification = useSelector((state) => state.ui.notification);
 
   useEffect(() => {
-    console.log("App.js->useEffect start");
-    fetch("https://http-practices-e3d22-default-rtdb.europe-west1.firebasedatabase.app//cart.json", { method: "PUT", body: JSON.stringify(cart) });
-    console.log("App.js->useEffect finish");
-  }, [cart]);
+    dispatch(fetchCartData());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (isInitial) {
+      isInitial = false;
+      return;
+    }
+
+    if (cart.changed) {
+      dispatch(sendCartData(cart));
+    }
+  }, [cart, dispatch]);
 
   return (
-    <Layout>
-      {showCart && <Cart />}
-      <Products />
-    </Layout>
+    <Fragment>
+      {notification && <Notification status={notification.status} title={notification.title} message={notification.message}></Notification>}
+      <Layout>
+        {showCart && <Cart />}
+        <Products />
+      </Layout>
+    </Fragment>
   );
 }
 
