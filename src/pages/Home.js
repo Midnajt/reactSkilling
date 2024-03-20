@@ -5,17 +5,17 @@ function Home() {
   const navigate = useNavigate();
 
   function navigationHandler() {
-    navigate("/products");
+    navigate("products");
   }
 
   return (
     <>
       <h1>My Home 0_o page</h1>
       <p>
-        Go to <Link to="/products">The list of products</Link>
+        Go to <Link to="products">The list of products</Link>
       </p>
       <p>
-        <button onClick={navigationHandler}>Navigate</button>
+        <button onClick={navigationHandler}>Navigate to products</button>
       </p>
     </>
   );
